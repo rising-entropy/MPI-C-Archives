@@ -8,7 +8,7 @@ int main(int argc, char** argv){
     MPI_Comm_size(MPI_COMM_WORLD, &size_Of_Comm);
     MPI_Comm_rank(MPI_COMM_WORLD, &process_Rank);
     
-    printf("Process Rank -  %d of %d", process_Rank, size_Of_Comm);
+    printf("Process Rank -  %d of %d\n", process_Rank, size_Of_Comm);
 
     MPI_Finalize();
     return 0;
