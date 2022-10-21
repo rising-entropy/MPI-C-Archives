@@ -9,7 +9,7 @@ int main(int argc, char** argv){
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-    int color = world_rank / 4; // Determine color based on row
+    int color = world_rank / 5; // Determine color based on row
 
     // Split the communicator based on the color and use the
     // original rank for ordering
