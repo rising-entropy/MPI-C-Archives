@@ -4,14 +4,14 @@
 #include <mpi.h>
 int main(int argc, char *argv[])
 {
-    // if (argc != 2)
-    // {
-    //     printf("Usage : bcast message_size\n");
-    //     return 1;
-    // }
+    if (argc != 2)
+    {
+        printf("Usage : bcast message_size\n");
+        return 1;
+    }
     int rank;
     int size = atoi(argv[1]);
-    char buffer[size];
+    char buffer[5];
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     int i;
@@ -36,5 +36,4 @@ int main(int argc, char *argv[])
         printf("Average time for broadcast : %f secs\n", total_time/100);
     }
     MPI_Finalize();
-    return 0;
 }
