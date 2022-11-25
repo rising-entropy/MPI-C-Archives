@@ -1,7 +1,6 @@
-// O(n^2) Matrix Multiplication (Using N processors)
-
 #include <mpi.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define SIZE 12			/* Size of matrices */
 
