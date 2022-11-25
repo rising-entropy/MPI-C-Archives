@@ -7,9 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 1024			/* Size of matrices */
+#define SIZE 2048			/* Size of matrices */
 
-int A[SIZE][SIZE], B[SIZE], C[SIZE];
+long A[SIZE][SIZE], B[SIZE], C[SIZE];
 
 void fill_matrix(int m[SIZE][SIZE])
 {
