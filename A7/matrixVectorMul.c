@@ -11,26 +11,26 @@
 
 long A[SIZE][SIZE], B[SIZE], C[SIZE];
 
-void fill_matrix(int m[SIZE][SIZE])
+void fill_matrix(long m[SIZE][SIZE])
 {
-  static int n=1;
-  int i, j;
+  static long n=1;
+  long i, j;
   for (i=0; i<SIZE; i++)
     for (j=0; j<SIZE; j++)
       m[i][j] = n++;
 }
 
-void fill_vector(int m[SIZE])
+void fill_vector(long m[SIZE])
 {
-  static int n=1;
-  int i;
+  static long n=1;
+  long i;
   for (i=0; i<SIZE; i++)
     m[i] = n++;
 }
 
-void print_matrix(int m[SIZE][SIZE])
+void print_matrix(long m[SIZE][SIZE])
 {
-  int i, j = 0;
+  long i, j = 0;
   for (i=0; i<SIZE; i++) {
     printf("\n\t| ");
     for (j=0; j<SIZE; j++)
@@ -42,8 +42,8 @@ void print_matrix(int m[SIZE][SIZE])
 
 int main(int argc, char *argv[])
 {
-  int myrank, P, from, to, i, j, k;
-  int tag = 666;		/* any value will do */
+  long myrank, P, from, to, i, j, k;
+  long tag = 666;		/* any value will do */
   MPI_Status status;
   
   MPI_Init (&argc, &argv);
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 
   printf("computing slice %d (from row %d to %d)\n", myrank, from, to-1);
   for (i=from; i<to; i++) {
-    int temp = 0;
+    long temp = 0;
     for (j=0; j<SIZE; j++) {
         temp += A[i][j]*B[j]; 
     }
