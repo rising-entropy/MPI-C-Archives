@@ -29,7 +29,7 @@ int main(int argc, char * argv[]) {
     total_time += (MPI_Wtime() - start_time);
   }
   if (rank == 0) {
-    printf("Average time for broadcast : %f secs\n", total_time / 100);
+    printf("Average time for broadcast : %f secs\n", total_time);
   }
   MPI_Finalize();
 }
