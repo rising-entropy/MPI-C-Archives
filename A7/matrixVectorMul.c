@@ -42,8 +42,8 @@ void print_matrix(long m[SIZE][SIZE])
 
 int main(int argc, char *argv[])
 {
-  long myrank, P, from, to, i, j, k;
-  long tag = 666;		/* any value will do */
+  int myrank, P, from, to, i, j, k;
+  int tag = 666;		/* any value will do */
   MPI_Status status;
   
   MPI_Init (&argc, &argv);
