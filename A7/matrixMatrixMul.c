@@ -5,6 +5,7 @@
  */
 #include <mpi.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define SIZE 1024			/* Size of matrices */
 
