@@ -24,7 +24,7 @@ int main(int argc, char * argv[]) {
     MPI_Barrier(MPI_COMM_WORLD);
     start_time = MPI_Wtime();
 
-    MPI_Reduce(input_buffer, output_buffer, size, MPI_BYTE, MPI_BOR, 0, MPI_COMM _WORLD);
+    MPI_Reduce(input_buffer, output_buffer, size, MPI_BYTE, MPI_BOR, 0, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
     total_time += (MPI_Wtime() - start_time);
   }
