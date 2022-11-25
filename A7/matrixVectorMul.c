@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     int np, rank, numworkers, rows, i, j, k;
 
     // a*b = c
-    double a[N][N], b[N], c[N];
+    int a[N][N], b[N], c[N];
     MPI_Status status;
 
     MPI_Init(&argc, &argv);
