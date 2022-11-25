@@ -4,11 +4,11 @@
 #include <mpi.h>
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        printf("Usage : reduce message_size\n");
-        return 1;
-    }
+    // if (argc != 2)
+    // {
+    //     printf("Usage : reduce message_size\n");
+    //     return 1;
+    // }
     int rank;
     int size = atoi(argv[1]);
     char input_buffer[size];
