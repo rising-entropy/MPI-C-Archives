@@ -36,4 +36,5 @@ int main(int argc, char *argv[])
         printf("Average time for broadcast : %f secs\n", total_time/100);
     }
     MPI_Finalize();
+    return 0;
 }
