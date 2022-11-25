@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // size of matrix
-#define N 1000
+#define N 1024
 
 int main(int argc, char *argv[])
 {
