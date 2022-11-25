@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
   MPI_Bcast (B, SIZE, MPI_INT, 0, MPI_COMM_WORLD);
   MPI_Scatter (A, SIZE*SIZE/P, MPI_INT, A[from], SIZE*SIZE/P, MPI_INT, 0, MPI_COMM_WORLD);
 
-  printf("computing slice %d (from row %d to %d)\n", myrank, from, to-1);
+  printf("computing slice %ld (from row %ld to %ld)\n", myrank, from, to-1);
   for (i=from; i<to; i++) {
     long temp = 0;
     for (j=0; j<SIZE; j++) {
