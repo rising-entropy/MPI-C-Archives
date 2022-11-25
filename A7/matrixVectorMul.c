@@ -84,8 +84,6 @@ int main(int argc, char *argv[])
     }
     C[i] = temp;
   }
-
-  printf("I am fucking up here");
     
   MPI_Gather (C, SIZE/P, MPI_INT, C, SIZE/P, MPI_INT, 0, MPI_COMM_WORLD);
   if (myrank==0) {
