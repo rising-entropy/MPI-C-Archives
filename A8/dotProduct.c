@@ -21,7 +21,7 @@ int main() {
   MPI_Status status;
   MPI_Comm world;
 
-  n = 100000;
+  n = 1048576;
   if (n > NELMS) { printf("n=%d > N=%d\n",n,NELMS); exit(1); }
 
   MPI_Init(NULL, NULL);
