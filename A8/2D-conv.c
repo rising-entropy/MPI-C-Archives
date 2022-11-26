@@ -63,26 +63,26 @@ int main ( int argc, char** argv ) {
   int num_procs;
   int ID, j;
   int iters = 0;
-  int num_iterations;
-  int DIM;
-  int GRID_WIDTH;
-  int KERNEL_DIM;
-  int KERNEL_SIZE;
+  int num_iterations = 1;
+  int DIM = 1024;
+  int GRID_WIDTH = 1;
+  int KERNEL_DIM = 2;
+  int KERNEL_SIZE = 2;
 
   num_iterations = DEFAULT_ITERATIONS;
-  if (argc >= 3) {
-    DIM = atoi(argv[1]);
-    GRID_WIDTH = DIM * DIM;
-    KERNEL_DIM = atoi(argv[2]);
-    KERNEL_SIZE = KERNEL_DIM * KERNEL_DIM;
-    if (argc == 4) {
-      num_iterations = atoi(argv[3]);
-    }
-  } else {
-    printf("Invalid command line arguments");
-    MPI_Finalize();
-    exit(-1);
-  }
+//   if (argc >= 3) {
+//     DIM = atoi(argv[1]);
+//     GRID_WIDTH = DIM * DIM;
+//     KERNEL_DIM = atoi(argv[2]);
+//     KERNEL_SIZE = KERNEL_DIM * KERNEL_DIM;
+//     if (argc == 4) {
+//       num_iterations = atoi(argv[3]);
+//     }
+//   } else {
+//     printf("Invalid command line arguments");
+//     MPI_Finalize();
+//     exit(-1);
+//   }
   int main_grid[GRID_WIDTH];
   memset(main_grid, 0, GRID_WIDTH*sizeof(int));
   for(int i = 0; i < GRID_WIDTH; i++) {
