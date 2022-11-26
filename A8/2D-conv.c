@@ -101,10 +101,10 @@ int main ( int argc, char** argv ) {
 
   // MPI Setup
    MPI_Init( NULL, NULL);
-//   if ( MPI_Init( &argc, &argv ) != MPI_SUCCESS )
-//   {
-//     printf ( "MPI_Init error\n" );
-//   }
+  if ( MPI_Init( &argc, &argv ) != MPI_SUCCESS )
+  {
+    printf ( "MPI_Init error\n" );
+  }
 
   MPI_Comm_size ( MPI_COMM_WORLD, &num_procs ); // Set the num_procs
   MPI_Comm_rank ( MPI_COMM_WORLD, &ID );
