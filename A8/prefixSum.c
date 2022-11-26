@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
 			if(send >= p)
 				continue;
 
-			printf("%d sending to %d\n", my_rank, (int) (my_rank+pow(2,i)));
+			// printf("%d sending to %d\n", my_rank, (int) (my_rank+pow(2,i)));
 			MPI_Send(&value, 1, MPI_INT, (int) (my_rank+pow(2,i)), 0, MPI_COMM_WORLD);
 		}
 		else if(my_rank >= upper_bound){
@@ -61,7 +61,7 @@ int main(int argc, char* argv[]){
 				continue;
 
 			int recv_value;
-			printf("%d receving..\n", my_rank);
+			// printf("%d receving..\n", my_rank);
 			MPI_Recv(&recv_value, 1, MPI_INT, (my_rank - pow(2,i)), 0, MPI_COMM_WORLD, &status);
 			value += recv_value;
 		}
@@ -71,10 +71,10 @@ int main(int argc, char* argv[]){
 			if(send >= p || recv >= p)
 				continue;
 
-			printf("%d sending to %d\n", my_rank, (int) (my_rank+pow(2,i)));
+			// printf("%d sending to %d\n", my_rank, (int) (my_rank+pow(2,i)));
 			MPI_Send(&value, 1, MPI_INT, (int) (my_rank+pow(2,i)), 0, MPI_COMM_WORLD);
 
-			printf("%d receving..\n", my_rank);
+			// printf("%d receving..\n", my_rank);
 			int recv_value;
 			MPI_Status status;
 			MPI_Recv(&recv_value, 1, MPI_INT, (my_rank - pow(2,i)), 0, MPI_COMM_WORLD, &status);
