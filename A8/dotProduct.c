@@ -20,8 +20,7 @@ int main() {
   double stime,etime;
   MPI_Status status;
   MPI_Comm world;
-
-  n = 1048576;
+  n = 100000;
   if (n > NELMS) { printf("n=%d > N=%d\n",n,NELMS); exit(1); }
 
   MPI_Init(NULL, NULL);
