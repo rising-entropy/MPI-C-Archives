@@ -24,6 +24,7 @@ int main(int argc, char** argv){
         MPI_Scatter(sendbuf, recvsize, MPI_INT, recvbuf, recvsize, MPI_INT, 0, MPI_COMM_WORLD);
     }else{
         MPI_Gather(sendbuf, sendsize, MPI_INT, recvbuf, sendsize, MPI_INT, 0, MPI_COMM_WORLD);
+        printf("%d %d", recvbuf[0], recvbuf[1]);
     }
 
     MPI_Finalize();
