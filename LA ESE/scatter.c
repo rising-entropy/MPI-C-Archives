@@ -27,8 +27,8 @@ int main(int argc, char **argv) {
         printf("\n");
         printf("This data is now going to be scattered.\n");
     }
+    //MPI_Scatter( const void* sendbuf , MPI_Count sendcount , MPI_Datatype sendtype , void* recvbuf , MPI_Count recvcount , MPI_Datatype recvtype , int root , MPI_Comm comm);
     MPI_Scatter(globaldata, 1, MPI_INT, &localdata, 1, MPI_INT, 0, MPI_COMM_WORLD);
-
     printf("2. After scattering, processor %d has data %d\n", rank, localdata);
 
     MPI_Finalize();
