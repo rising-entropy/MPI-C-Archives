@@ -15,21 +15,18 @@ int main(int argc, char **argv) {
     int globaldata[size];
     int localdata;
 
-    int i;
-
     // default thread that sets values
     if (rank == 0) {
 
-        for (i=0; i<size; i++)
+        for (int i=0; i<size; i++)
             globaldata[i] = i;
 
         printf("1. Processor %d has data: ", rank);
-        for (i=0; i<size; i++)
+        for (int i=0; i<size; i++)
             printf("%d ", globaldata[i]);
         printf("\n");
         printf("This data is now going to be scattered.\n");
     }
-
     MPI_Scatter(globaldata, 1, MPI_INT, &localdata, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
     printf("2. After scattering, processor %d has data %d\n", rank, localdata);
