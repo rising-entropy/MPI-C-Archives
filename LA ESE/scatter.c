@@ -11,10 +11,12 @@ int main(int argc, char **argv) {
     MPI_Comm_size(MPI_COMM_WORLD, &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    int globaldata[4];
+    int globaldata[8];
     int localdata;
 
     int i;
+
+    // default thread that sets values
     if (rank == 0) {
 
         for (i=0; i<size; i++)
@@ -40,7 +42,6 @@ int main(int argc, char **argv) {
             printf("%d ", globaldata[i]);
         printf("\n");
     }
-
 
     MPI_Finalize();
     return 0;
