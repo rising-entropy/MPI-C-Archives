@@ -10,6 +10,20 @@ int main(int argc, char** argv){
     int world_rank, world_size;
     MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-    printf("Hello!");
+
+    const int recvsize = 10;
+    for(int i=0; i<recvsize; i++){
+        recvbuf[i] = i;
+    }
+    int *sendbuf, recvbuf[recvsize];
+    int sendsize = world_size*recvsize;
+    sendbuf = new int[sendsize];
+
+    if(world_rank == 0){
+        MPI_Scatter(sendbuf, recvsize, MPI_INT, recvbuf, recvsize, MPI_INT, 0, MPI_COMM_WORLD);
+    }else{
+        MPI_Gather(sendbuf, sendsize, MPI_INT, recvbuf, sendsize, MPI_INT, 0, MPI_COMM_WORLD);
+    }
+
     MPI_Finalize();
 }
