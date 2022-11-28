@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
         for (i=0; i<size; i++)
             printf("%d ", globaldata[i]);
         printf("\n");
-        printf("\nThis data is now going to be scattered.\n");
+        printf("This data is now going to be scattered.\n");
     }
 
     MPI_Scatter(globaldata, 1, MPI_INT, &localdata, 1, MPI_INT, 0, MPI_COMM_WORLD);
