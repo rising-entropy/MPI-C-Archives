@@ -1,1 +1,0 @@
-MPI_Scatter( const void* sendbuf , MPI_Count sendcount , MPI_Datatype sendtype , void* recvbuf , MPI_Count recvcount , MPI_Datatype recvtype , int root , MPI_Comm comm);
