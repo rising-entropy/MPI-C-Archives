@@ -1,31 +1,47 @@
-// 2019BTECS00058 Devang K
+// 2019BTECS00058
 
-#include<stdlib.h>
-#include<stdio.h>
-#include<mpi.h>
+#include <mpi.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int main(int argc, char** argv){
+int main(int argc, char **argv) {
+    int size, rank;
+
     MPI_Init(&argc, &argv);
-    // Get the rank and size in the original communicator
-    int world_rank, world_size;
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+    MPI_Comm_size(MPI_COMM_WORLD, &size);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    const int recvsize = 10;
-    
-    int *sendbuf, recvbuf[recvsize];
-    int sendsize = world_size*recvsize;
-    sendbuf = (int*)malloc(sendsize*sizeof(int));
-    for(int i=0; i<recvsize; i++){
-        recvbuf[i] = i;
+    int globaldata[4];
+    int localdata;
+
+    int i;
+    if (rank == 0) {
+
+        for (i=0; i<size; i++)
+            globaldata[i] = i;
+
+        printf("1. Processor %d has data: ", rank);
+        for (i=0; i<size; i++)
+            printf("%d ", globaldata[i]);
+        printf("\n");
     }
 
-    if(world_rank == 0){
-        MPI_Scatter(sendbuf, recvsize, MPI_INT, recvbuf, recvsize, MPI_INT, 0, MPI_COMM_WORLD);
-    }else{
-        MPI_Gather(sendbuf, sendsize, MPI_INT, recvbuf, sendsize, MPI_INT, 0, MPI_COMM_WORLD);
-        printf("%d %d", recvbuf[0], recvbuf[1]);
+    MPI_Scatter(globaldata, 1, MPI_INT, &localdata, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+    printf("2. Processor %d has data %d\n", rank, localdata);
+    localdata= 5;
+    printf("3. Processor %d now has %d\n", rank, localdata);
+
+    MPI_Gather(&localdata, 1, MPI_INT, globaldata, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+    if (rank == 0) {
+        printf("4. Processor %d has data: ", rank);
+        for (i=0; i<size; i++)
+            printf("%d ", globaldata[i]);
+        printf("\n");
     }
+
 
     MPI_Finalize();
+    return 0;
 }
