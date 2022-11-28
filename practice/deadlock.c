@@ -10,10 +10,14 @@ int main(int argc, char** argv){
     double data = 100;
     int tag = 1;
     if(rank == 0){
+        printf("Sending from Rank 1");
         MPI_Ssend( &data, 1, MPI_DOUBLE, 1, tag , MPI_COMM_WORLD);
+        printf("Receiving from Rank 1");
         MPI_Recv(&data, 1, MPI_DOUBLE, 1, tag, MPI_COMM_WORLD, &status);
     }else{
+        printf("Sending from Rank 2");
         MPI_Ssend( &data, 1, MPI_DOUBLE, 1, tag , MPI_COMM_WORLD);
+        printf("Receiving from Rank 2");
         MPI_Recv(&data, 1, MPI_DOUBLE, 1, tag, MPI_COMM_WORLD, &status);
     }
     MPI_Finalize();
