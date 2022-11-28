@@ -12,12 +12,13 @@ int main(int argc, char** argv){
     MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
     const int recvsize = 10;
-    for(int i=0; i<recvsize; i++){
-        recvbuf[i] = i;
-    }
+    
     int *sendbuf, recvbuf[recvsize];
     int sendsize = world_size*recvsize;
     sendbuf = new int[sendsize];
+    for(int i=0; i<recvsize; i++){
+        recvbuf[i] = i;
+    }
 
     if(world_rank == 0){
         MPI_Scatter(sendbuf, recvsize, MPI_INT, recvbuf, recvsize, MPI_INT, 0, MPI_COMM_WORLD);
