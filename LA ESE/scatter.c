@@ -15,7 +15,7 @@ int main(int argc, char** argv){
     
     int *sendbuf, recvbuf[recvsize];
     int sendsize = world_size*recvsize;
-    sendbuf = new int[sendsize];
+    sendbuf = (int*)malloc(sendsize*sizeof(int));
     for(int i=0; i<recvsize; i++){
         recvbuf[i] = i;
     }
